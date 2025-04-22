@@ -2,15 +2,22 @@ version: '3.9'
 
 services:
   zep:
-    image: ghcr.io/getzep/zep:latest  # ← or pin to known working tag like "v0.14.6"
+    image: ghcr.io/getzep/zep:latest
     container_name: zep
     restart: unless-stopped
     ports:
       - "8012:8000"
     volumes:
       - zep_data:/data
-    env_file:
-      - .env  # ← Load vars from .env file instead
+    environment:
+      - ZEP_SERVER_URL
+      - ZEP_DB_PATH
+      - ZEP_AUTH_TYPE
+      - ZEP_AUTH_API_KEYS
+      - ZEP_OPENAI_API_KEY
+      - ZEP_EMBEDDINGS_MODEL
+      - ZEP_NAMESPACE_INDEX_STRATEGY
+      - ZEP_STORE_TYPE
 
 volumes:
   zep_data:
