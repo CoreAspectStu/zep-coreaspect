@@ -9,15 +9,15 @@ services:
       - "8012:8000"
     volumes:
       - zep_data:/data
-    environment:
-      - ZEP_SERVER_URL
-      - ZEP_DB_PATH
-      - ZEP_AUTH_TYPE
-      - ZEP_AUTH_API_KEYS
-      - ZEP_OPENAI_API_KEY
-      - ZEP_EMBEDDINGS_MODEL
-      - ZEP_NAMESPACE_INDEX_STRATEGY
-      - ZEP_STORE_TYPE
+environment:
+  ZEP_SERVER_URL: http://0.0.0.0:8000
+  ZEP_DB_PATH: /data/zep.db
+  ZEP_AUTH_TYPE: apikey
+  ZEP_AUTH_API_KEYS: 
+  ZEP_OPENAI_API_KEY: sk-your-openai-key
+  ZEP_EMBEDDINGS_MODEL: openai/text-embedding-3-small
+  ZEP_NAMESPACE_INDEX_STRATEGY: dense
+  ZEP_STORE_TYPE: sqlite
 
 volumes:
   zep_data:
