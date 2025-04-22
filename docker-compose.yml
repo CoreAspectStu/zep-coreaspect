@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  zep:
+    image: ghcr.io/getzep/zep:v0.15.3
+    container_name: zep
+    restart: unless-stopped
+    ports:
+      - "8012:8000"
+    volumes:
+      - zep_data:/data
+    env_file:
+      - .env  # ← Load vars from .env file instead
+
+volumes:
+  zep_data:
